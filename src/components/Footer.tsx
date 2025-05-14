@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
   
   return (
     <footer className="bg-brand-gray-s text-white py-12 px-4">
@@ -13,7 +15,7 @@ export default function Footer() {
               <Link href="/">
                 <Image 
                   src="/images/logo.png" 
-                  alt="SpaceGate" 
+                  alt={t('site.title')} 
                   width={160}
                   height={40}
                   className="h-10 w-auto"
@@ -21,7 +23,7 @@ export default function Footer() {
               </Link>
             </div>
             <p className="text-brand-gray-t mb-4">
-              Smart building solutions for a connected future.
+              {t('footer.tagline')}
             </p>
             <div className="flex gap-4">
               <Link href="https://twitter.com" aria-label="Twitter" className="text-brand-gray-t hover:text-brand-green-t transition-colors">
@@ -43,18 +45,18 @@ export default function Footer() {
           </div>
           
           <div>
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-4">{t('footer.links')}</h3>
             <ul className="space-y-2">
-              <li><Link href="#services" className="text-brand-gray-t hover:text-brand-green-t transition-colors">Services</Link></li>
-              <li><Link href="#projects" className="text-brand-gray-t hover:text-brand-green-t transition-colors">Projects</Link></li>
-              <li><Link href="/about" className="text-brand-gray-t hover:text-brand-green-t transition-colors">About Us</Link></li>
+              <li><Link href="#services" className="text-brand-gray-t hover:text-brand-green-t transition-colors">{t('nav.services')}</Link></li>
+              <li><Link href="#projects" className="text-brand-gray-t hover:text-brand-green-t transition-colors">{t('nav.projects')}</Link></li>
+              <li><Link href="/about" className="text-brand-gray-t hover:text-brand-green-t transition-colors">{t('nav.about')}</Link></li>
               <li><Link href="/careers" className="text-brand-gray-t hover:text-brand-green-t transition-colors">Careers</Link></li>
               <li><Link href="/blog" className="text-brand-gray-t hover:text-brand-green-t transition-colors">Blog</Link></li>
             </ul>
           </div>
           
           <div id="contact">
-            <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+            <h3 className="text-xl font-bold mb-4">{t('footer.contact')}</h3>
             <address className="not-italic text-brand-gray-t">
               <p className="mb-2">123 Smart Building Avenue</p>
               <p className="mb-2">Tech District, City</p>
@@ -74,7 +76,7 @@ export default function Footer() {
         </div>
         
         <div className="border-t border-brand-gray mt-12 pt-8 text-center text-brand-gray-t">
-          <p>&copy; {currentYear} SpaceGate. All rights reserved.</p>
+          <p>&copy; {currentYear} SpaceGate. {t('footer.rights')}</p>
         </div>
       </div>
     </footer>

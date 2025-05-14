@@ -3,6 +3,7 @@
 import { siteConfig } from '@/config/site';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useLanguage } from '@/context/LanguageContext';
 
 // Separate client components for app store badges
 function IOSBadge() {
@@ -48,6 +49,8 @@ function AndroidBadge() {
 }
 
 export default function Hero() {
+  const { t, language } = useLanguage();
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-12 px-4">
       {/* Background - optimized for fast load */}
@@ -70,10 +73,10 @@ export default function Hero() {
       <div className="container mx-auto relative z-10 max-w-6xl">
         <div className="max-w-2xl text-white">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-            {siteConfig.hero.heading}
+            {t('hero.heading')}
           </h1>
           <p className="text-lg md:text-xl mb-8 text-white/90">
-            {siteConfig.hero.subheading}
+            {t('hero.subheading')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4">
@@ -81,19 +84,21 @@ export default function Hero() {
               href="#contact" 
               className="bg-brand-green hover:bg-brand-green-s text-white px-6 py-3 rounded-md font-medium text-center transition-colors"
             >
-              {siteConfig.hero.ctaText}
+              {t('hero.cta')}
             </Link>
             <Link 
               href="#services" 
               className="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white px-6 py-3 rounded-md font-medium text-center transition-colors border border-brand-green-t"
             >
-              Explore Services
+              {t('hero.explore')}
             </Link>
           </div>
           
           {/* App Store Badges */}
           <div className="mt-12 flex flex-col sm:flex-row items-center gap-4">
-            <p className="text-white/80 text-sm mb-2 sm:mb-0 mr-2">Get our mobile app:</p>
+            <p className="text-white/80 text-sm mb-2 sm:mb-0 mr-2">
+              {t('hero.getApp')}
+            </p>
             
             {/* iOS Badge */}
             <IOSBadge />

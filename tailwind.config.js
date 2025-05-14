@@ -25,6 +25,15 @@ module.exports = {
         'dark-light': '#606666',   // gray-tint-25
         'dark-dark': '#202626',    // gray-shade-25
       },
+      fontFamily: {
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
+        arabic: ['var(--font-cairo)'],
+      },
+      direction: {
+        rtl: 'rtl',
+        ltr: 'ltr',
+      },
     },
   },
   plugins: [],

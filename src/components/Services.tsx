@@ -1,6 +1,9 @@
 import { siteConfig } from '@/config/site';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Services() {
+  const { t } = useLanguage();
+
   // Icons mapping
   const getIcon = (iconName: string) => {
     switch (iconName) {
@@ -27,13 +30,28 @@ export default function Services() {
     }
   };
 
+  const serviceTranslations = {
+    'building': {
+      title: 'services.bms.title',
+      description: 'services.bms.description',
+    },
+    'property': {
+      title: 'services.pms.title',
+      description: 'services.pms.description',
+    },
+    'security': {
+      title: 'services.security.title',
+      description: 'services.security.description',
+    },
+  };
+
   return (
     <section id="services" className="py-20 px-4 bg-gray-50">
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-gray">Our Core Services</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-gray">{t('services.title')}</h2>
           <p className="text-dark-light max-w-3xl mx-auto">
-            SpaceGate provides comprehensive solutions to transform buildings into smart, efficient, and secure environments.
+            {t('services.subtitle')}
           </p>
         </div>
         
@@ -46,28 +64,29 @@ export default function Services() {
               <div className="mb-4">
                 {getIcon(service.icon)}
               </div>
-              <h3 className="text-xl font-semibold mb-3 text-brand-gray">{service.title}</h3>
-              <p className="text-dark-light">{service.description}</p>
+              <h3 className="text-xl font-semibold mb-3 text-brand-gray">
+                {t(serviceTranslations[service.icon as keyof typeof serviceTranslations].title)}
+              </h3>
+              <p className="text-dark-light">
+                {t(serviceTranslations[service.icon as keyof typeof serviceTranslations].description)}
+              </p>
             </div>
           ))}
         </div>
         
         {/* Iraq-specific section for SEO */}
         <div className="mt-16 bg-primary-light/20 p-8 rounded-lg border border-brand-green/20">
-          <h3 className="text-2xl font-bold mb-4 text-brand-gray">Building Management Systems (BMS) in Iraq</h3>
+          <h3 className="text-2xl font-bold mb-4 text-brand-gray">{t('services.iraq.title')}</h3>
           <p className="text-dark-light mb-4">
-            As a leading provider of Building Management Systems (BMS) in Iraq, SpaceGate delivers cutting-edge solutions tailored to the unique needs of the Iraqi market. Our BMS technology helps building owners and operators in Baghdad, Basra, Erbil, and throughout Iraq optimize energy efficiency, enhance occupant comfort, and improve operational performance.
-          </p>
-          <p className="text-dark-light mb-4">
-            Our BMS Iraq services include system design, installation, integration, training, and ongoing support, ensuring that your building infrastructure operates at peak efficiency year-round despite challenging climate conditions and energy constraints.
+            {t('services.iraq.description')}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div className="bg-white p-4 rounded-md shadow-sm border-l-4 border-brand-green">
-              <h4 className="font-semibold text-lg mb-2 text-brand-green">Energy Management in Iraqi Climate</h4>
+              <h4 className="font-semibold text-lg mb-2 text-brand-green">{t('services.iraq.energy')}</h4>
               <p className="text-dark-light">Our systems are optimized for Iraq's extreme temperature variations, helping reduce energy consumption by up to 30% with intelligent HVAC control strategies.</p>
             </div>
             <div className="bg-white p-4 rounded-md shadow-sm border-l-4 border-brand-green">
-              <h4 className="font-semibold text-lg mb-2 text-brand-green">Local Technical Support</h4>
+              <h4 className="font-semibold text-lg mb-2 text-brand-green">{t('services.iraq.support')}</h4>
               <p className="text-dark-light">With offices in Baghdad and Erbil, our local technical teams provide rapid response and support for all BMS deployments throughout Iraq.</p>
             </div>
           </div>

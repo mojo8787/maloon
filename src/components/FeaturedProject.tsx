@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { siteConfig } from '@/config/site';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function FeaturedProject() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { t, language } = useLanguage();
   
   const handleNext = () => {
     setCurrentIndex((prevIndex) => 
@@ -26,15 +28,15 @@ export default function FeaturedProject() {
           {/* Text Content */}
           <div className="lg:w-1/2">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-brand-gray">
-              Featured Project: {siteConfig.featuredProject.title}
+              {t('projects.featured')} {siteConfig.featuredProject.title}
             </h2>
             <p className="text-dark-light mb-6">
-              {siteConfig.featuredProject.description}
+              {t('projects.description')}
             </p>
             <div className="flex flex-wrap gap-4 mb-6">
-              <span className="px-3 py-1 bg-primary-light/20 text-brand-green rounded-full text-sm">Property Management</span>
-              <span className="px-3 py-1 bg-primary-light/20 text-brand-green rounded-full text-sm">Smart Buildings</span>
-              <span className="px-3 py-1 bg-primary-light/20 text-brand-green rounded-full text-sm">Security Systems</span>
+              <span className="px-3 py-1 bg-primary-light/20 text-brand-green rounded-full text-sm">{t('projects.tag.property')}</span>
+              <span className="px-3 py-1 bg-primary-light/20 text-brand-green rounded-full text-sm">{t('projects.tag.smart')}</span>
+              <span className="px-3 py-1 bg-primary-light/20 text-brand-green rounded-full text-sm">{t('projects.tag.security')}</span>
             </div>
           </div>
           
@@ -50,7 +52,7 @@ export default function FeaturedProject() {
                 >
                   <Image
                     src={image.src}
-                    alt={image.alt.en}
+                    alt={language === 'ar' ? image.alt.ar : image.alt.en}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-contain"
@@ -62,8 +64,11 @@ export default function FeaturedProject() {
             
             {/* Caption */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-gray/90 to-transparent p-4 text-white">
-              <p>
-                {siteConfig.featuredProject.images[currentIndex].alt.en}
+              <p className={language === 'ar' ? 'text-right' : 'text-left'}>
+                {language === 'ar'
+                  ? siteConfig.featuredProject.images[currentIndex].alt.ar
+                  : siteConfig.featuredProject.images[currentIndex].alt.en
+                }
               </p>
             </div>
             
@@ -109,7 +114,7 @@ export default function FeaturedProject() {
         
         {/* Partners Section */}
         <div className="mt-16 pt-8 border-t border-gray-200">
-          <h3 className="text-xl font-semibold mb-6 text-center text-brand-gray">Our Technology Partners</h3>
+          <h3 className="text-xl font-semibold mb-6 text-center text-brand-gray">{t('projects.partners')}</h3>
           <div className="flex justify-center items-center">
             <div className="px-6 py-4">
               <Image 

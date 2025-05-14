@@ -3,9 +3,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <header className="fixed top-0 w-full bg-brand-gray text-white bg-opacity-95 backdrop-blur-sm z-50 shadow-sm">
@@ -13,7 +16,7 @@ export default function Header() {
         <Link href="/" className="flex items-center">
           <Image 
             src="/images/logo.png" 
-            alt="SpaceGate" 
+            alt={t('site.title')} 
             width={160}
             height={40}
             className="h-10 w-auto"
@@ -39,23 +42,24 @@ export default function Header() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
           <Link href="#services" className="text-white hover:text-brand-green-t transition-colors">
-            Services
+            {t('nav.services')}
           </Link>
           <Link href="#projects" className="text-white hover:text-brand-green-t transition-colors">
-            Projects
+            {t('nav.projects')}
           </Link>
           <Link href="#about" className="text-white hover:text-brand-green-t transition-colors">
-            About
+            {t('nav.about')}
           </Link>
           <Link href="#contact" className="text-white hover:text-brand-green-t transition-colors">
-            Contact
+            {t('nav.contact')}
           </Link>
           <Link 
             href="/login"
             className="bg-brand-green text-white px-4 py-2 rounded-md hover:bg-brand-green-s transition-colors"
           >
-            Sign In
+            {t('nav.signin')}
           </Link>
+          <LanguageSwitcher />
         </nav>
       </div>
       
@@ -68,35 +72,38 @@ export default function Header() {
               className="text-white hover:text-brand-green-t transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Services
+              {t('nav.services')}
             </Link>
             <Link 
               href="#projects" 
               className="text-white hover:text-brand-green-t transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Projects
+              {t('nav.projects')}
             </Link>
             <Link 
               href="#about" 
               className="text-white hover:text-brand-green-t transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              About
+              {t('nav.about')}
             </Link>
             <Link 
               href="#contact" 
               className="text-white hover:text-brand-green-t transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Contact
+              {t('nav.contact')}
             </Link>
             <Link
               href="/login"
               className="bg-brand-green text-white px-4 py-2 rounded-md hover:bg-brand-green-s transition-colors block text-center mt-2"
             >
-              Sign In
+              {t('nav.signin')}
             </Link>
+            <div className="mt-4 pt-4 border-t border-gray-700">
+              <LanguageSwitcher />
+            </div>
           </nav>
         </div>
       )}
