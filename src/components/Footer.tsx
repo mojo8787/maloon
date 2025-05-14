@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
@@ -50,25 +52,25 @@ export default function Footer() {
               <li><Link href="#services" className="text-brand-gray-t hover:text-brand-green-t transition-colors">{t('nav.services')}</Link></li>
               <li><Link href="#projects" className="text-brand-gray-t hover:text-brand-green-t transition-colors">{t('nav.projects')}</Link></li>
               <li><Link href="/about" className="text-brand-gray-t hover:text-brand-green-t transition-colors">{t('nav.about')}</Link></li>
-              <li><Link href="/careers" className="text-brand-gray-t hover:text-brand-green-t transition-colors">Careers</Link></li>
-              <li><Link href="/blog" className="text-brand-gray-t hover:text-brand-green-t transition-colors">Blog</Link></li>
+              <li><Link href="/careers" className="text-brand-gray-t hover:text-brand-green-t transition-colors">{t('careers')}</Link></li>
+              <li><Link href="/blog" className="text-brand-gray-t hover:text-brand-green-t transition-colors">{t('blog')}</Link></li>
             </ul>
           </div>
           
           <div id="contact">
             <h3 className="text-xl font-bold mb-4">{t('footer.contact')}</h3>
             <address className="not-italic text-brand-gray-t">
-              <p className="mb-2">123 Smart Building Avenue</p>
-              <p className="mb-2">Tech District, City</p>
-              <p className="mb-4">Country</p>
+              <p className="mb-2">{t('address.line1')}</p>
+              <p className="mb-2">{t('address.line2')}</p>
+              <p className="mb-4">{t('address.line3')}</p>
               <p className="mb-2">
                 <a href="mailto:info@spacegate.com" className="hover:text-brand-green-t transition-colors">
-                  info@spacegate.com
+                  {t('email')}
                 </a>
               </p>
               <p>
                 <a href="tel:+1234567890" className="hover:text-brand-green-t transition-colors">
-                  +123 456 7890
+                  {t('phone')}
                 </a>
               </p>
             </address>

@@ -1,3 +1,5 @@
+'use client';
+
 import { siteConfig } from '@/config/site';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -83,11 +85,11 @@ export default function Services() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div className="bg-white p-4 rounded-md shadow-sm border-l-4 border-brand-green">
               <h4 className="font-semibold text-lg mb-2 text-brand-green">{t('services.iraq.energy')}</h4>
-              <p className="text-dark-light">Our systems are optimized for Iraq's extreme temperature variations, helping reduce energy consumption by up to 30% with intelligent HVAC control strategies.</p>
+              <p className="text-dark-light">{t('services.iraq.energy.desc')}</p>
             </div>
             <div className="bg-white p-4 rounded-md shadow-sm border-l-4 border-brand-green">
               <h4 className="font-semibold text-lg mb-2 text-brand-green">{t('services.iraq.support')}</h4>
-              <p className="text-dark-light">With offices in Baghdad and Erbil, our local technical teams provide rapid response and support for all BMS deployments throughout Iraq.</p>
+              <p className="text-dark-light">{t('services.iraq.support.desc')}</p>
             </div>
           </div>
         </div>
