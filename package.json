@@ -2,23 +2,36 @@
   "name": "webapp",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
+    "export": "next build && next export -o out",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "analyze": "ANALYZE=true next build",
+    "test-lighthouse": "npx @lhci/cli@0.11.x autorun",
+    "netlify:dev": "netlify dev",
+    "netlify:build": "next build && next-on-netlify"
   },
   "dependencies": {
+    "critters": "^0.0.20",
+    "next": "15.3.2",
+    "next-on-netlify": "^3.0.1",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.3.2"
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@netlify/plugin-nextjs": "^4.41.3",
+    "@next/bundle-analyzer": "^15.3.2",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
