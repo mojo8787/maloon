@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/context/LanguageContext';
 
 // Separate client components for app store badges
-function IOSBadge() {
+const IOSBadge = () => {
   return (
     <a 
       href="https://apps.apple.com/app/spacegate/id123456789"
@@ -25,9 +25,9 @@ function IOSBadge() {
       />
     </a>
   );
-}
+};
 
-function AndroidBadge() {
+const AndroidBadge = () => {
   return (
     <a 
       href="https://play.google.com/store/apps/details?id=com.spacegate.app"
@@ -46,7 +46,7 @@ function AndroidBadge() {
       />
     </a>
   );
-}
+};
 
 export default function Hero() {
   const { t, language } = useLanguage();

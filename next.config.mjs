@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    optimizeCss: false, // Disable CSS optimization to avoid critters dependency
+  }
 };
 
 export default nextConfig; 

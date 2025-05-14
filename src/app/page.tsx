@@ -1,17 +1,5 @@
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import FeaturedProject from "@/components/FeaturedProject";
-import Footer from "@/components/Footer";
+import HomePageClient from "@/components/HomePageClient";
 
 export default function Home() {
-  return (
-    <main className="min-h-screen">
-      <Header />
-      <Hero />
-      <Services />
-      <FeaturedProject />
-      <Footer />
-    </main>
-  );
+  return <HomePageClient />;
 }
