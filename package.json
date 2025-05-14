@@ -8,19 +8,17 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "export": "next build && next export -o out",
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "analyze": "ANALYZE=true next build",
     "test-lighthouse": "npx @lhci/cli@0.11.x autorun",
     "netlify:dev": "netlify dev",
-    "netlify:build": "next build && next-on-netlify"
+    "netlify:build": "next build"
   },
   "dependencies": {
     "critters": "0.0.20",
     "next": "15.3.2",
-    "next-on-netlify": "^3.0.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
