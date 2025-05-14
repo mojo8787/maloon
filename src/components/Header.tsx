@@ -10,6 +10,10 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { t } = useLanguage();
 
+  const handleNavLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="fixed top-0 w-full bg-brand-gray text-white bg-opacity-95 backdrop-blur-sm z-50 shadow-sm">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
@@ -53,12 +57,14 @@ export default function Header() {
           <Link href="#contact" className="text-white hover:text-brand-green-t transition-colors">
             {t('nav.contact')}
           </Link>
-          <Link 
-            href="/login"
+          <a 
+            href="https://space-gate.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
             className="bg-brand-green text-white px-4 py-2 rounded-md hover:bg-brand-green-s transition-colors"
           >
             {t('nav.signin')}
-          </Link>
+          </a>
           <LanguageSwitcher />
         </nav>
       </div>
@@ -70,37 +76,39 @@ export default function Header() {
             <Link 
               href="#services" 
               className="text-white hover:text-brand-green-t transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={handleNavLinkClick}
             >
               {t('nav.services')}
             </Link>
             <Link 
               href="#projects" 
               className="text-white hover:text-brand-green-t transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={handleNavLinkClick}
             >
               {t('nav.projects')}
             </Link>
             <Link 
               href="#about" 
               className="text-white hover:text-brand-green-t transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={handleNavLinkClick}
             >
               {t('nav.about')}
             </Link>
             <Link 
               href="#contact" 
               className="text-white hover:text-brand-green-t transition-colors py-2"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={handleNavLinkClick}
             >
               {t('nav.contact')}
             </Link>
-            <Link
-              href="/login"
+            <a
+              href="https://space-gate.com"
+              target="_blank" 
+              rel="noopener noreferrer"
               className="bg-brand-green text-white px-4 py-2 rounded-md hover:bg-brand-green-s transition-colors block text-center mt-2"
             >
               {t('nav.signin')}
-            </Link>
+            </a>
             <div className="mt-4 pt-4 border-t border-gray-700">
               <LanguageSwitcher />
             </div>

@@ -4,6 +4,7 @@ import { Cairo } from "next/font/google";
 import "./globals.css";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import LanguageProvider from "@/context/LanguageContext";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -78,7 +79,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${cairoFont.variable} antialiased`}
       >
-        <GoogleAnalytics />
+        <Suspense fallback={null}>
+          <GoogleAnalytics />
+        </Suspense>
         <LanguageProvider>
           {children}
         </LanguageProvider>
